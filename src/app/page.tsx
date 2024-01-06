@@ -10,6 +10,11 @@ import SCSSIcon from "@/components/icons/SCSSIcon";
 import TailwindIcon from "@/components/icons/TailwindIcon";
 import ReactIcon from "@/components/icons/ReactIcon";
 import NextJsIcon from "@/components/icons/NextJsIcon";
+import JavaIcon from "@/components/icons/JavaIcon";
+import KotlinIcon from "@/components/icons/KotlinIcon";
+import CIcon from "@/components/icons/CIcon";
+import CppIcon from "@/components/icons/CppIcon";
+import PythonIcon from "@/components/icons/PythonIcon";
 
 export default function Home() {
     return (
@@ -48,8 +53,12 @@ export default function Home() {
 
                                 <CarouselItem className="basis-1/6 phone:basis-1/3"><ReactIcon width={48} fill="#20c573"/></CarouselItem>
                                 <CarouselItem className="basis-1/6 phone:basis-1/3"><NextJsIcon width={48} fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 phone:basis-1/3"><SCSSIcon width={48} fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 phone:basis-1/3"><SCSSIcon width={48} fill="#20c573"/></CarouselItem>
+                                <CarouselItem className="basis-1/6 phone:basis-1/3"><JavaIcon width={48} fill="#20c573"/></CarouselItem>
+                                <CarouselItem className="basis-1/6 phone:basis-1/3"><KotlinIcon width={48} fill="#20c573" /></CarouselItem>
+                                <CarouselItem className="basis-1/6 phone:basis-1/3"><CIcon width={48} fill="#20c573" /></CarouselItem>
+                                <CarouselItem className="basis-1/6 phone:basis-1/3"><CppIcon width={48} fill="#20c573" /></CarouselItem>
+
+                                <CarouselItem className="basis-1/6 phone:basis-1/3"><PythonIcon width={48} fill="#20c573" /></CarouselItem>
                             </CarouselContent>
                         </AutoCarousel>
                     </div>
