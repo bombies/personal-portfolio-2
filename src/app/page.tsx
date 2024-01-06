@@ -1,6 +1,5 @@
 import Image from "@/components/Image";
-import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+import {CarouselContent, CarouselItem} from "@/components/ui/carousel";
 import AutoCarousel from "@/components/AutoCarousel";
 import JavaScriptIcon from "@/components/icons/JavaScriptIcon";
 import TypeScriptIcon from "@/components/icons/TypeScriptIcon";
