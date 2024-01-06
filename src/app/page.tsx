@@ -18,17 +18,14 @@ import PythonIcon from "@/components/icons/PythonIcon";
 export default function Home() {
     return (
         <main>
-            <section className="w-full h-[32rem]">
-                <Image src="/images/blur-bg-2.svg" alt=""
-                       className="w-full h-full !absolute"
-                       fill
-                       style={{
-                           objectFit: "cover"
-                       }}
-                />
-                <div className="absolute px-24 phone:px-6 flex flex-col justify-center h-full phone:items-center w-full">
-                    <h1 className="text-7xl phone:text-5xl font-bold mb-4">Hey 👋🏾,</h1>
-                    <h3 className="text-5xl phone:text-3xl font-semibold mb-4">i&apos;m <span className="text-primary font-bold">Ajani Green</span>
+            <section className="px-24 phone:px-6 w-full h-fit" style={{
+                backgroundImage: "url(/images/blur-bg-2.svg)",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "100%"
+            }}>
+                <div className="flex flex-col justify-center h-screen phone:items-center w-full">
+                    <h1 className="text-7xl phone:text-5xl font-bold mb-4 text-neutral-100">Hey 👋🏾,</h1>
+                    <h3 className="text-5xl phone:text-3xl font-semibold mb-4 text-neutral-100">i&apos;m <span className="text-primary font-bold">Ajani Green</span>
                     </h3>
                     <div className="border border-primary bg-primary  rounded-2xl p-6 w-fit mb-4">
                         <p className="font-semibold text-darker text-2xl phone:text-lg">Full Stack Developer</p>
@@ -62,6 +59,9 @@ export default function Home() {
                         </AutoCarousel>
                     </div>
                 </div>
+            </section>
+            <section className="px-24 py-12 phone:px-6">
+                <h1 className="font-bold text-5xl text-neutral-100">about me</h1>
             </section>
         </main>
     )
