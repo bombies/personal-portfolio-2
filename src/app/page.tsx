@@ -88,14 +88,17 @@ export default function Home() {
             <section className="px-24 py-12 phone:px-6">
                 <h1 className="font-bold text-5xl text-neutral-100 phone:text-center mb-4">about me</h1>
                 <p className="w-1/2 tablet:w-5/6 phone:w-full">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda, deserunt harum id
-                    iste natus non possimus quae quam quo soluta suscipit totam unde velit voluptate? Eveniet
-                    perspiciatis ratione voluptatem.
+                    I am a full stack developer from Jamaica 🇯🇲. For front-end development I mainly specialize in
+                    ReactJS, more specifically Next.js. I have made several projects with this framework, each with
+                    different goals. In terms of back-end development, I&apos;m able to build applications in
+                    JavaScript/TypeScript using Express.js or any frameworks that use Express such as NestJS. I am also
+                    able to build RESTful applications using Java Spring, Ktor, or FastAPI (Python).
                 </p>
             </section>
             <section className="px-24 py-12 phone:px-6">
                 <h1 className="font-bold text-5xl text-neutral-100 phone:text-center mb-4">my projects</h1>
-                <div className="grid grid-cols-3 laptop:grid-cols-2 tablet:grid-cols-1 tablet:justify-items-center gap-8">
+                <div
+                    className="grid grid-cols-3 laptop:grid-cols-2 tablet:grid-cols-1 tablet:justify-items-center gap-8">
                     <ProjectCard
                         title="Robertify"
                         description={"Robertify is a music bot written completely in Java and Kotlin using the Java Discord API (JDA)."}
