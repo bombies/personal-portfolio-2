@@ -22,33 +22,34 @@ const NavBar: FC = () => {
                 {
                     mobileNavVisible && (
                         <motion.div
-                            className="z-50 top-0 left-0 fixed w-screen h-screen bg-darker/90 backdrop-blur-md py-16 px-8 flex flex-col gap-6 tablet-min:hidden"
+                            className="z-50 top-0 left-0 fixed w-screen h-screen bg-darker/90 backdrop-blur-md py-16 px-8 flex flex-col gap-2 tablet-min:hidden"
                             initial={{opacity: 0, y: -500}}
                             animate={{opacity: 100, y: 0}}
                             exit={{opacity: 0, y: -500}}
                         >
                             <Link
                                 href="/#about"
-                                className="text-xl hover:text-primary ease-in-out duration-200"
+                                className="text-xl text-center hover:bg-primary/10 py-1 rounded-lg ease-in-out duration-200"
                                 onClick={() => setMobileNavVisible(false)}
                             >
                                 about me
                             </Link>
                             <Link
                                 href="/#projects"
-                                className="text-xl hover:text-primary ease-in-out duration-200"
+                                className="text-xl text-center hover:bg-primary/10 py-1 rounded-lg ease-in-out duration-200"
                                 onClick={() => setMobileNavVisible(false)}
                             >
                                 projects
                             </Link>
                             <Link
                                 href="/AjaniGreenResume.pdf"
-                                className="text-xl hover:text-primary ease-in-out duration-200"
+                                className="text-xl text-center hover:bg-primary/10 py-1 rounded-lg ease-in-out duration-200"
                                 onClick={() => setMobileNavVisible(false)}
                                 target="_blank"
                             >
                                 resume
                             </Link>
+                            <ContactDrawer />
                         </motion.div>
                     )
                 }
