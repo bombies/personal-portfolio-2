@@ -85,7 +85,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="px-24 py-12 phone:px-6">
+            <section className="px-24 py-12 phone:px-6" id="about">
                 <h1 className="font-bold text-5xl text-neutral-100 phone:text-center mb-4">about me</h1>
                 <p className="w-1/2 tablet:w-5/6 phone:w-full">
                     I am a full stack developer from Jamaica 🇯🇲. For front-end development I mainly specialize in
@@ -95,7 +95,7 @@ export default function Home() {
                     able to build RESTful applications using Java Spring, Ktor, or FastAPI (Python).
                 </p>
             </section>
-            <section className="px-24 py-12 phone:px-6">
+            <section className="px-24 py-12 phone:px-6" id="projects">
                 <h1 className="font-bold text-5xl text-neutral-100 phone:text-center mb-4">my projects</h1>
                 <div
                     className="grid grid-cols-3 laptop:grid-cols-2 tablet:grid-cols-1 tablet:justify-items-center gap-8">

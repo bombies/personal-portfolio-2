@@ -57,7 +57,7 @@ const ProjectLayout: FC<ProjectLayoutProps> = ({
             }
             <section className="py-12 px-20 phone:p-6">
                 <div className="border border-primary bg-primary rounded-2xl p-6 max-w-xl mb-12">
-                    <Link href="/">
+                    <Link href="/#projects">
                         <Button variant="link" className="text-darker gap-2 p-0">
                             <ArrowLeft width={16} />
                             Go back
