@@ -8,7 +8,6 @@ import KotlinIcon from "@/components/icons/KotlinIcon";
 import PythonIcon from "@/components/icons/PythonIcon";
 import CIcon from "@/components/icons/CIcon";
 import CppIcon from "@/components/icons/CppIcon";
-import {FC} from "react";
 import TailwindIcon from "@/components/icons/TailwindIcon";
 import HTMLIcon from "@/components/icons/HTMLIcon";
 import CSSIcon from "@/components/icons/CSSIcon";
@@ -24,69 +23,98 @@ import PostgreSQLIcon from "@/components/icons/PostgreSQLIcon";
 import AWSIcon from "@/components/icons/AWSIcon";
 import AngularJSIcon from "@/components/icons/AngularJSIcon";
 import GrafanaIcon from "@/components/icons/GrafanaIcon";
+import {FC} from "react";
+import ExpressJsIcon from "@/components/icons/ExpressJsIcon";
 
-export const ProjectTechStack: Record<string, TechStack[]> = {
-    Robertify: ["java", "kotlin", "ts", "react", "nextjs", "nestjs", "redis", "mongo", "tailwind", "sass", "spring", "ktor", "influx", "sentry", "ghactions", 'grafana'],
-    DreamLogger: ["react", "nextjs", "ts", "tailwind", "sass", "postgres", "aws", "ghactions"],
-    GreensPub: ["react", "nextjs", "ts", "tailwind", "sass", "mongo", "ghactions"],
-    MDGPT: ["react", "nextjs", "ts", "tailwind", "sass", "mongo", "python"],
-    CarMart: ["angular", "ts", "tailwind", "sass", "mongo", "redis"]
+export enum TechStack {
+    JavaScript,
+    TypeScript,
+    ExpressJs,
+    NextJs,
+    ReactJs,
+    NestJs,
+    Java,
+    Kotlin,
+    Python,
+    C,
+    Cpp,
+    Redis,
+    MongoDB,
+    PostgreSQL,
+    AWS,
+    TailwindCSS,
+    HTML,
+    CSS,
+    SASS,
+    Spring,
+    Ktor,
+    Influx,
+    Sentry,
+    GitHubActions,
+    Angular,
+    Grafana
 }
 
-export type TechStack = "js" | "ts" | "express" | "nextjs" | "react" | "nestjs" | "java" | "kotlin" |
-    "python" | "c" | "cpp" | "redis" | "mongo" | "postgres" | "aws" | "tailwind" | "html" | "css" | "sass" |
-    "spring" | "ktor" | "influx" | "sentry" | "ghactions" | "angular" | "grafana"
+export const ProjectTechStack: Record<string, TechStack[]> = {
+    Robertify: [TechStack.Java, TechStack.Kotlin, TechStack.TypeScript, TechStack.ReactJs, TechStack.NextJs, TechStack.NestJs, TechStack.Redis, TechStack.MongoDB, TechStack.TailwindCSS, TechStack.SASS, TechStack.Spring, TechStack.Ktor, TechStack.Influx, TechStack.Sentry, TechStack.GitHubActions, TechStack.Grafana],
+    DreamLogger: [TechStack.ReactJs, TechStack.NextJs, TechStack.TypeScript, TechStack.TailwindCSS, TechStack.SASS, TechStack.PostgreSQL, TechStack.AWS, TechStack.GitHubActions],
+    GreensPub: [TechStack.ReactJs, TechStack.NextJs, TechStack.TypeScript, TechStack.TailwindCSS, TechStack.SASS, TechStack.MongoDB, TechStack.GitHubActions],
+    MDGPT: [TechStack.ReactJs, TechStack.NextJs, TechStack.TypeScript, TechStack.TailwindCSS, TechStack.SASS, TechStack.MongoDB, TechStack.Python],
+    CarMart: [TechStack.Angular, TechStack.TypeScript, TechStack.TailwindCSS, TechStack.SASS, TechStack.MongoDB, TechStack.Redis]
+}
 
 export const parseTechStackIcon = (stack: TechStack, props?: IconProps) => {
     switch (stack) {
-        case "js":
+        case TechStack.JavaScript:
             return <JavaScriptIcon {...props} />
-        case "ts":
+        case TechStack.TypeScript:
             return <TypeScriptIcon {...props} />
-        case "nextjs":
+        case TechStack.NextJs:
             return <NextJsIcon {...props} />
-        case "react":
+        case TechStack.ReactJs:
             return <ReactIcon {...props} />
-        case "java":
+        case TechStack.Java:
             return <JavaIcon {...props} />
-        case "kotlin":
+        case TechStack.Kotlin:
             return <KotlinIcon {...props} />
-        case "python":
+        case TechStack.Python:
             return <PythonIcon {...props} />
-        case "c":
+        case TechStack.C:
             return <CIcon {...props} />
-        case "cpp":
+        case TechStack.Cpp:
             return <CppIcon {...props} />
-        case "tailwind":
+        case TechStack.TailwindCSS:
             return <TailwindIcon {...props} />
-        case "html":
+        case TechStack.HTML:
             return <HTMLIcon {...props} />
-        case "css":
+        case TechStack.CSS:
             return <CSSIcon {...props} />
-        case "sass":
+        case TechStack.SASS:
             return <SCSSIcon {...props} />
-        case "nestjs":
+        case TechStack.NestJs:
             return <NestJSIcon {...props} />
-        case "mongo":
+        case TechStack.MongoDB:
             return <MongoDBIcon {...props} />
-        case "redis":
+        case TechStack.Redis:
             return <RedisIcon {...props} />
-        case "spring":
+        case TechStack.Spring:
             return <JavaSpringIcon {...props} />
-        case "influx":
+        case TechStack.Influx:
             return <InfluxDBIcon {...props} />
-        case "sentry":
+        case TechStack.Sentry:
             return <SentryIcon {...props} />
-        case "ghactions":
+        case TechStack.GitHubActions:
             return <GitHubIcon {...props} />
-        case "postgres":
+        case TechStack.PostgreSQL:
             return <PostgreSQLIcon {...props} />
-        case "aws":
+        case TechStack.AWS:
             return <AWSIcon {...props} />
-        case "angular":
+        case TechStack.Angular:
             return <AngularJSIcon {...props} />
-        case "grafana":
+        case TechStack.Grafana:
             return <GrafanaIcon {...props} />
+        case TechStack.ExpressJs:
+            return <ExpressJsIcon {...props} />
         default:
             return <></>
     }
@@ -94,57 +122,57 @@ export const parseTechStackIcon = (stack: TechStack, props?: IconProps) => {
 
 export const parseTechStackFullName = (stack: TechStack) => {
     switch (stack) {
-        case "js":
+        case TechStack.JavaScript:
             return "JavaScript"
-        case "ts":
+        case TechStack.TypeScript:
             return "TypeScript"
-        case "nestjs":
+        case TechStack.NestJs:
             return "NestJS"
-        case "nextjs":
+        case TechStack.NextJs:
             return "Next.js"
-        case "react":
+        case TechStack.ReactJs:
             return "ReactJS"
-        case "redis":
+        case TechStack.Redis:
             return "Redis"
-        case "aws":
+        case TechStack.AWS:
             return "Amazon Web Services"
-        case "express":
+        case TechStack.ExpressJs:
             return "Express.js"
-        case "c":
+        case TechStack.C:
             return "C"
-        case "cpp":
+        case TechStack.Cpp:
             return "C++"
-        case "java":
+        case TechStack.Java:
             return "Java"
-        case "kotlin":
+        case TechStack.Kotlin:
             return "Kotlin"
-        case "mongo":
+        case TechStack.MongoDB:
             return "MongoDB"
-        case "postgres":
+        case TechStack.PostgreSQL:
             return "PostgreSQL"
-        case "python":
+        case TechStack.Python:
             return "Python"
-        case "css":
+        case TechStack.CSS:
             return "CSS"
-        case "html":
+        case TechStack.HTML:
             return "HTML"
-        case "sass":
+        case TechStack.SASS:
             return "SASS"
-        case "tailwind":
+        case TechStack.TailwindCSS:
             return "TailwindCSS"
-        case "spring":
+        case TechStack.Spring:
             return "Java Spring"
-        case "ktor":
+        case TechStack.Ktor:
             return "Ktor"
-        case "influx":
+        case TechStack.Influx:
             return "InfluxDB"
-        case "sentry":
+        case TechStack.Sentry:
             return "Sentry"
-        case "ghactions":
+        case TechStack.GitHubActions:
             return "GitHub Actions"
-        case "angular":
+        case TechStack.Angular:
             return "AngularJS"
-        case "grafana":
+        case TechStack.Grafana:
             return "Grafana"
     }
 }
@@ -157,7 +185,7 @@ export const TechStackCard: FC<TechStackCardProps> = ({stack}) => {
     return (
         <div className="rounded-2xl bg-primary p-6 flex gap-4">
             {parseTechStackIcon(stack, {fill: "#000", width: 24})}
-            <p className="text-darker font-semibold text-lg">{parseTechStackFullName(stack)}</p>
+            <p className="text-darker font-semibold text-lg self-center">{parseTechStackFullName(stack)}</p>
         </div>
     )
 }

@@ -14,7 +14,7 @@ import CIcon from "@/components/icons/CIcon";
 import CppIcon from "@/components/icons/CppIcon";
 import PythonIcon from "@/components/icons/PythonIcon";
 import ProjectCard from "@/components/projects/ProjectCard";
-import {ProjectTechStack} from "@/components/projects/project-utils";
+import {ProjectTechStack, TechStack, TechStackCard} from "@/components/projects/project-utils";
 
 export default function Home() {
     return (
@@ -138,6 +138,11 @@ export default function Home() {
             </section>
             <section className="px-24 py-12 phone:px-6">
                 <h1 className="font-bold text-5xl text-neutral-100 phone:text-center mb-4">skills & technologies</h1>
+                <div className="grid grid-cols-3 tablet:grid-cols-2 phone:grid-cols-1 gap-4">
+                    {(Object.values(TechStack).filter(v => !isNaN(Number(v))) as unknown as TechStack[]).map((stack, i) => (
+                        <TechStackCard key={`${i}#${stack}`} stack={stack}/>
+                    ))}
+                </div>
             </section>
         </main>
     )
