@@ -14,7 +14,7 @@ import CIcon from "@/components/icons/CIcon";
 import CppIcon from "@/components/icons/CppIcon";
 import PythonIcon from "@/components/icons/PythonIcon";
 import ProjectCard from "@/components/projects/ProjectCard";
-import {ProjectTechStack, TechStack, TechStackCard} from "@/components/projects/project-utils";
+import {parseTechStackIcon, ProjectTechStack, TechStack, TechStackCard} from "@/components/projects/project-utils";
 
 export default function Home() {
     return (
@@ -32,7 +32,7 @@ export default function Home() {
                     <div className="border border-primary bg-primary  rounded-2xl p-6 w-fit mb-4">
                         <p className="font-semibold text-darker text-2xl phone:text-lg">Full Stack Developer</p>
                     </div>
-                    <div className="w-1/2 phone:w-64 !overflow-hidden">
+                    <div className="w-[42%] phone:w-64 !overflow-hidden">
                         <AutoCarousel delay={5000}
                                       opts={{
                                           align: 'start',
@@ -42,44 +42,14 @@ export default function Home() {
                             <CarouselContent
                                 className="-ml-1"
                             >
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4 phone:basis-1/3"><JavaScriptIcon
-                                    width={48}
-                                    fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><TypeScriptIcon
-                                    width={48}
-                                    fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><HTMLIcon
-                                    width={48}
-                                    fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><CSSIcon
-                                    width={48} fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><SCSSIcon
-                                    width={48}
-                                    fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><TailwindIcon
-                                    width={48}
-                                    fill="#20c573"/></CarouselItem>
-
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><ReactIcon
-                                    width={48}
-                                    fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><NextJsIcon
-                                    width={48}
-                                    fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><JavaIcon
-                                    width={48}
-                                    fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><KotlinIcon
-                                    width={48}
-                                    fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><CIcon width={48}
-                                                                                                             fill="#20c573"/></CarouselItem>
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><CppIcon
-                                    width={48} fill="#20c573"/></CarouselItem>
-
-                                <CarouselItem className="basis-1/6 tablet:basis-1/4  phone:basis-1/3"><PythonIcon
-                                    width={48}
-                                    fill="#20c573"/></CarouselItem>
+                                {(Object.values(TechStack).filter(v => !isNaN(Number(v))) as unknown as TechStack[]).map((stack, i) => (
+                                    <CarouselItem key={`${i}#${stack}`} className="basis-1/8 tablet:basis-1/4 phone:basis-1/3">
+                                        {parseTechStackIcon(stack, {
+                                            width: 48,
+                                            fill: "#20c573"
+                                        })}
+                                    </CarouselItem>
+                                ))}
                             </CarouselContent>
                         </AutoCarousel>
                     </div>

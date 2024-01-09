@@ -27,9 +27,12 @@ import {FC} from "react";
 import ExpressJsIcon from "@/components/icons/ExpressJsIcon";
 
 export enum TechStack {
+    HTML,
+    CSS,
+    SASS,
+    TailwindCSS,
     JavaScript,
-    TypeScript,
-    ExpressJs,
+    TypeScript,ExpressJs,
     NextJs,
     ReactJs,
     NestJs,
@@ -42,10 +45,6 @@ export enum TechStack {
     MongoDB,
     PostgreSQL,
     AWS,
-    TailwindCSS,
-    HTML,
-    CSS,
-    SASS,
     Spring,
     Ktor,
     Influx,
