@@ -44,6 +44,6 @@ jobs:
           mkdir ~/.ssh
           echo "$SSH_KEY" > ~/.ssh/github-actions
           chmod 400 ~/.ssh/github-actions
-          echo -e "Host vps\n\tUser $SSH_USER\n\tHostname $SSH_HOST\n\tPort $SSH_PORT\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+          echo -e "Host vps\n\tUser $SSH_USER\n\tHostname $SSH_HOST\n\tPort $SSH_PORT\n\tIdentityFile ~/.ssh/github-actions\n\tStrictHostKeyChecking No\n\tPasswordAuthentication yes" >> ~/.ssh/config
           rsync -re ssh ./.next/ vps:$SSH_BUILD_DIR
           ssh vps "pm2 restart PersonalPortfolio"
