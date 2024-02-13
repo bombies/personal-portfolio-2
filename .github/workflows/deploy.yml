@@ -12,6 +12,7 @@ jobs:
       matrix:
         node-version: [ 20.x ]
     env:
+      SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
       SSH_KEY: ${{ secrets.SSH_KEY }}
       SSH_HOST: ${{ secrets.SSH_HOST }}
       SSH_PORT: ${{ secrets.SSH_PORT }}
@@ -41,6 +42,9 @@ jobs:
           npm run build
       - name: Deploy
         run: |
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          echo 'echo $SSH_PASSPHRASE' > ~/.ssh_askpass && chmod +x ~/.ssh_askpass
+          echo "$SSH_KEY" | tr -d '\r' | DISPLAY=None SSH_ASKPASS=~/.ssh_askpass ssh-add - >/dev/null
           mkdir ~/.ssh
           echo "$SSH_KEY" > ~/.ssh/github-actions
           chmod 400 ~/.ssh/github-actions
