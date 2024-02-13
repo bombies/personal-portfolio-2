@@ -1,0 +1,48 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 20.x ]
+    env:
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_BUILD_DIR: ${{ secrets.SSH_BUILD_DIR }}
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Install Dependencies
+        run: npm i
+      - name: "Setup Build Cache"
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.[jt]s', '**/*.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      - name: Building Project
+        run: |
+          npm run build
+      - name: Deploy
+        run: |
+          mkdir ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/github-actions
+          chmod 400 ~/.ssh/github-actions
+          echo -e "Host vps\n\tUser $SSH_USER\n\tHostname $SSH_HOST\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+          rsync -re ssh ./.next/ vps:$SSH_BUILD_DIR
+          ssh vps "pm2 restart PersonalPortfolio"
