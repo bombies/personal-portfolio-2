@@ -17,6 +17,7 @@ jobs:
       SSH_USER: ${{ secrets.SSH_USER }}
       SSH_PORT: ${{ secrets.SSH_PORT }}
       SSH_BUILD_DIR: ${{ secrets.SSH_BUILD_DIR }}
+      PATH_TO_PM2: ${{ secrets.PATH_TO_PM2 }}
     steps:
       - name: Clone Repository
         uses: actions/checkout@v3
@@ -46,4 +47,4 @@ jobs:
           chmod 400 ~/.ssh/github-actions
           echo -e "Host vps\n\tUser $SSH_USER\n\tHostname $SSH_HOST\n\tPort $SSH_PORT\n\tIdentityFile ~/.ssh/github-actions\n\tStrictHostKeyChecking No" >> ~/.ssh/config
           rsync -re ssh ./.next/ vps:$SSH_BUILD_DIR
-          ssh vps "pm2 restart PersonalPortfolio"
+          ssh vps "export PATH='$PATH_TO_PM2'; pm2 restart PersonalPortfolio"
