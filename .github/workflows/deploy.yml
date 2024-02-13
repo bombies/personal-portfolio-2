@@ -51,5 +51,5 @@ jobs:
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           echo 'echo $SSH_PASSPHRASE' > ~/.ssh_askpass && chmod +x ~/.ssh_askpass
           echo "$SSH_KEY" | tr -d '\r' | DISPLAY=None SSH_ASKPASS=~/.ssh_askpass ssh-add - >/dev/null
-          rsync -re ssh -p $SSH_PORT ./.next/ $SSH_USER@$SSH_HOST:$SSH_BUILD_DIR
+          sshpass -p $SSH_PASSPHRASE rsync -re ssh -p $SSH_PORT ./.next/ $SSH_USER@$SSH_HOST:$SSH_BUILD_DIR
           ssh vps "pm2 restart PersonalPortfolio"
