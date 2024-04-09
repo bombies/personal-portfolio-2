@@ -7,17 +7,16 @@ module.exports = {
         './app/**/*.{ts,tsx}',
         './src/**/*.{ts,tsx}',
     ],
-    prefix: "",
     theme: {
         screens: {
-            desktop: {"max": "1920px"},
-            "laptop-big": {"max": "1440px"},
-            laptop: {"max": "1280px"},
-            tablet: {"max": "1025px"},
-            phone: {"max": "615px"},
-            "laptop-min": {"min": "1280px"},
-            "tablet-min": {"min": "1025px"},
-            "phone-min": {"min": "615px"}
+            desktop: { "max": "1920px" },
+            "laptop-big": { "max": "1440px" },
+            laptop: { "max": "1280px" },
+            tablet: { "max": "1025px" },
+            phone: { "max": "615px" },
+            "laptop-min": { "min": "1280px" },
+            "tablet-min": { "min": "1025px" },
+            "phone-min": { "min": "615px" }
         },
         extend: {
             colors: {
@@ -31,12 +30,12 @@ module.exports = {
             },
             keyframes: {
                 "accordion-down": {
-                    from: {height: "0"},
-                    to: {height: "var(--radix-accordion-content-height)"},
+                    from: { height: "0" },
+                    to: { height: "var(--radix-accordion-content-height)" },
                 },
                 "accordion-up": {
-                    from: {height: "var(--radix-accordion-content-height)"},
-                    to: {height: "0"},
+                    from: { height: "var(--radix-accordion-content-height)" },
+                    to: { height: "0" },
                 },
             },
             animation: {
