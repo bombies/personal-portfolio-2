@@ -36,7 +36,7 @@ const CookiesPopup: FC = () => {
                 <CardContent>
                     <p className="phone:text-sm">
                         This website uses cookies to ensure you get the best
-                        experience while browsing our portfolio. Essential
+                        experience while browsing my portfolio. Essential
                         cookies help this site function smoothly, enabling
                         features like secure browsing. Analytics cookies let me
                         understand how you interact with the site.
