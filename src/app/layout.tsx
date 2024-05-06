@@ -32,7 +32,7 @@ export default function RootLayout({
             <body className={clsx(inter.className)}>
                 <CookiesProvider>
                     <NavBar />
-                    {!cookiesConsentObj.configured && <CookiesPopup />}
+                    <CookiesPopup />
                     {children}
                 </CookiesProvider>
             </body>
