@@ -26,7 +26,7 @@
         "next-client-cookies": "^1.1.1",
         "react": "^18",
         "react-dom": "^18",
-        "sass": "^1.74.1",
+        "sass": "^1.76.0",
         "tailwind-merge": "^2.2.2",
         "tailwindcss-animate": "^1.0.7",
         "vaul": "^0.9.0"
