@@ -1,32 +1,46 @@
 "use client";
 
-import { FC, forwardRef, useCallback, useMemo } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { CookieIcon } from "lucide-react";
 import { motion } from "framer-motion";
-import { useCookies } from "next-client-cookies";
-import { CookiesConsent, DefaultCookiesConsent } from "../lib/utils";
+import { DefaultCookiesConsent } from "../lib/utils";
 import { Button } from "./ui/button";
+import useLocalStorage from "../lib/hooks/useLocalStorage";
 
 const CookiesPopup: FC = () => {
-    const cookies = useCookies();
-    const cookiesConsent = cookies.get("cookiesConsent");
-    const cookiesConsentObj = cookiesConsent
-        ? (JSON.parse(cookiesConsent) as CookiesConsent)
-        : DefaultCookiesConsent;
+    const { storage: localStorage, storageLoading } = useLocalStorage();
+    const [cookieConsentStorage, setCookieConsentStorage] = useState<string>();
 
-    const configCookies = useCallback(
-        (config: CookiesConsent["config"]) => {
-            cookiesConsentObj.config = config;
-            cookiesConsentObj.configured = true;
-            cookies.set("cookiesConsent", JSON.stringify(cookiesConsentObj));
-        },
-        [cookies, cookiesConsentObj]
-    );
+    useEffect(() => {
+        if (!storageLoading)
+            setCookieConsentStorage(
+                localStorage!.getItem("cookiesConsent") || undefined
+            );
+    }, [localStorage, storageLoading]);
+
+    const onAccept = useCallback(() => {
+        const storage = JSON.stringify(DefaultCookiesConsent);
+        localStorage?.setItem("cookiesConsent", storage);
+        setCookieConsentStorage(storage);
+    }, [localStorage]);
+
+    const onDeny = useCallback(() => {
+        const storage = JSON.stringify({
+            configured: true,
+            config: {
+                ...DefaultCookiesConsent.config,
+                statistics: false,
+            },
+        });
+
+        localStorage?.setItem("cookiesConsent", storage);
+        setCookieConsentStorage(storage);
+    }, [localStorage]);
 
     const card = useMemo(
         () => (
-            <Card className="fixed bottom-5 left-5 phone:left-0 z-50 p-4 shadow-md w-[45rem] phone:w-full">
+            <Card className="p-4 shadow-md w-[45rem] phone:w-full">
                 <CardHeader>
                     <CardTitle className="flex items-center">
                         <CookieIcon width={24} className="mr-2 flex-shrink-0" />
@@ -42,41 +56,25 @@ const CookiesPopup: FC = () => {
                         understand how you interact with the site.
                     </p>
                     <div className="flex gap-2 phone:justify-center mt-4">
-                        <Button
-                            onClick={() =>
-                                configCookies({
-                                    essential: true,
-                                    statistics: true,
-                                })
-                            }
-                        >
-                            Allow All
-                        </Button>
-                        <Button
-                            onClick={() =>
-                                configCookies({
-                                    essential: true,
-                                    statistics: false,
-                                })
-                            }
-                        >
-                            Deny All
-                        </Button>
+                        <Button onClick={onAccept}>Allow All</Button>
+                        <Button onClick={onDeny}>Deny Optional</Button>
                     </div>
                 </CardContent>
             </Card>
         ),
-        [configCookies]
+        [onAccept, onDeny]
     );
 
     return (
-        !cookiesConsentObj.configured && (
+        !cookieConsentStorage &&
+        !storageLoading && (
             <motion.div
+                className="fixed left-5 phone:left-0 z-50"
                 layout
-                initial={{ opacity: 0, bottom: -20 }}
+                initial={{ opacity: 0, bottom: -100 }}
                 animate={{ opacity: 1, bottom: 20 }}
                 transition={{ duration: 0.5 }}
-                exit={{ opacity: 0, y: 100 }}
+                exit={{ opacity: 0, bottom: -100 }}
             >
                 {card}
             </motion.div>

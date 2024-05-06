@@ -3,13 +3,15 @@
 import { useEffect, useState } from "react";
 
 const useLocalStorage = () => {
-    const [localStorage, setLocalStorage] = useState<Storage>();
+    const [storageLoading, setStorageLoading] = useState(true);
+    const [storage, setStorage] = useState<Storage | null>(null);
 
     useEffect(() => {
-        setLocalStorage(window.localStorage);
+        if (typeof window !== "undefined") setStorage(window.localStorage);
+        setStorageLoading(false);
     }, []);
 
-    return localStorage;
+    return { storage, storageLoading };
 };
 
 export default useLocalStorage;
