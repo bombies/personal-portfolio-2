@@ -8,6 +8,7 @@ import { cookies } from "next/headers";
 import CookiesPopup from "../components/CookiesPopup";
 import { CookiesConsent, DefaultCookiesConsent } from "../lib/utils";
 import { CookiesProvider } from "next-client-cookies/server";
+import ScriptProvider from "../components/ScriptProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -36,9 +37,9 @@ export default function RootLayout({
                     {children}
                 </CookiesProvider>
             </body>
-            {cookiesConsentObj.config.statistics !== false && (
-                <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID || ""} />
-            )}
+            <ScriptProvider
+                googleAnalyticsId={process.env.GOOGLE_ANALYTICS_ID || ""}
+            />
         </html>
     );
 }
