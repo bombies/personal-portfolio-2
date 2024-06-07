@@ -3,13 +3,13 @@
 export default $config({
     app(input) {
         return {
-            name: "personal-portfolio-2",
+            name: "personal-portfolio",
             removal: input?.stage === "production" ? "retain" : "remove",
             home: "aws",
         };
     },
     async run() {
-        new sst.aws.Nextjs("PersonalPortfolio", {
+        new sst.aws.Nextjs("Portfolio", {
           domain: {
             name: "ajani.me"
           }
