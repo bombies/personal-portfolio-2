@@ -10,9 +10,12 @@ export default $config({
     },
     async run() {
         new sst.aws.Nextjs("Portfolio", {
-          domain: {
-            name: "ajani.me"
-          }
+            domain:
+                $app.stage === "production"
+                    ? {
+                          name: "ajani.me",
+                      }
+                    : undefined,
         });
     },
 });
