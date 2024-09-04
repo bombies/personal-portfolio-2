@@ -26,7 +26,7 @@
     "next-client-cookies": "^1.1.1",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.77.5",
+    "sass": "^1.78.0",
     "sharp": "^0.33.4",
     "sst": "ion",
     "tailwind-merge": "^2.3.0",
